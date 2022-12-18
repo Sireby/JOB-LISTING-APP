@@ -56,7 +56,7 @@ const jobSchema = new mongoose.Schema({
         required: [true, 'Please enter keyword'],
         enum: ['remote ', 'full stack developer',  'data analyst', 
         'scrum master', 'technical writer', 'product designer', ' backend developer', 
-        'fulltime', 'frontend developer'],
+        'fulltime', 'frontend developer', 'business analyst'],
     },
 
     createdAt : {

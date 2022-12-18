@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 const { createToken } = require("../middleware/authMiddleware");
 const Token = require("../models/token");
 const { handleErrors } = require("../utils/errorHandler");
-//const { email } = require("../utils/email");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 
@@ -93,30 +92,7 @@ exports.login = async (req, res) => {
     });
   }
 };
-//   const { email, password } = req.body;
-//   try {
-//     const findUser = await User.findOne({ email , password })
-//     if (!findUser) {
-//       res.status(400).json({ message: "Invalid details" });
-//     }
-//     const checkPassword = await bcrypt.compare(password, findUser.password);
-//     if (!checkPassword) {
-//       res.status(400).json({ message: "Invalid details" });
-//     } else {
-//       const token = createToken(findUser._id);
-//       res.cookie("jwt", token, {
-//         httpOnly: true,
-//         maxAge: maxAge * 1000,
-//       });
-//       res
-//         .status(200)
-//         .json({ status: "success", Id: findUser._id, email: findUser.email });
-//     }
-//   } catch (err) {
-//     const error = handleErrors(err);
-//     res.status(400).json({ error });
-//   }
-// };
+
 
 exports.logout = async (req, res) => {
   try {

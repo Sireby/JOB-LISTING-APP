@@ -12,8 +12,8 @@ router
   .post(auth,  createJob)
   .get(auth, getAllJob);
 
-router.get("/recommend-jobs", auth, recommendJobs);
-router.delete("/:id", auth, checkUser("admin"), deleteJob);
+router.get("/recommend", auth, recommendJobs);
+router.delete("/:id", auth,  deleteJob);
 
 router.get("/:id", auth, getOneJob);
 

@@ -51,7 +51,7 @@ exports.getOneJob = async (req, res) => {
       return response.status(200).send({
         status: true,
         message: "Job Found",
-        Blog: findOneJob,
+        data: findOneJob,
       });
     }
   } catch (err) {
@@ -70,7 +70,7 @@ exports.getOneJob = async (req, res) => {
 };
 
 
-// Get jobs based on Location, Keywords
+
 exports.getAllJob = async (req, res) => {
   try {
     let queriedJob = new QueryMethod(Job.find(), req.query)
@@ -90,11 +90,11 @@ exports.getAllJob = async (req, res) => {
   }
 };
 
-// Recommend jobs with user skills
+
 exports.recommendJobs = async (req, res) => {
   try {
     const user = req.user;
-    let job = await Job.find({ keywords: user.skills });
+    let job = await Job.find({ keywords: user.skill });
     res.status(200).json({
       status: "success",
       results: job.length,
@@ -106,16 +106,16 @@ exports.recommendJobs = async (req, res) => {
   }
 };
 
-exports.deleteJob = async (request, response) => {
-  const id = request.params.id;
+exports.deleteJob = async (req, res) => {
+  const id = req.params.id;
   const findJob = await Job.findByIdAndDelete(id);
   if (findJob) {
-    return response.status(200).send({
+    return res.status(200).send({
       status: true,
       message: "Job deleted successfully",
     });
   } else {
-    return response.status(409).send({
+    return res.status(409).send({
       status: false,
       message: "Job not found",
     });

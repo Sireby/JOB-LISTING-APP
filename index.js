@@ -9,8 +9,9 @@ const cookieParser = require("cookie-parser");
 const authRoute = require("./src/routes/auth");
 const userRoute = require("./src/routes/user");
 const jobRoute = require("./src/routes/job");
-// const userJobRoutes = require("./src/routes/userJobRoute");
+const jobApplicationRoute = require("./src/routes/jobApplication");
 const { config } = require("dotenv");
+
 
 const app = express();
 app.use(express.json());
@@ -27,7 +28,7 @@ app.use(morgan("combined", { stream: accessLogStream }));
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/job", jobRoute);
-//app.use("/api/v1/user", userJobRoutes);
+app.use("/api/v1/apply", jobApplicationRoute);
 
 
 module.exports = app;
